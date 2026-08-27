@@ -1,11 +1,71 @@
-# CSF-DNC
+# Chromatic symmetric functions via deletion-near-contraction
 
-This repository contains code to compute the Chromatic Symmetric Function in the star-basis using the deletion-near-contraction relation introduced by Aliste-Prieto, de Mier, Orellana, and Zamora. 
+This repository contains SageMath research code for computing the chromatic symmetric function (CSF) in the star basis. The implementation uses the deletion-near-contraction (DNC) relation introduced by Aliste-Prieto, de Mier, Orellana, and Zamora.
 
-Note about usage: Every file other than DNCfundamentals.ipynb and helperFunctions.ipynb contains a cell with the following two lines:
+The notebooks support ongoing joint work by Michael Gonzalez, Rosa Orellana, and Mario Tomba on chromatic symmetric functions of trees, with a particular emphasis on caterpillars and related bases.
 
-  %run DNCfundamentals.ipynb
-  
-  %run helperFunctions.ipynb
-  
-These two lines need to be executed before running the remaining cells.
+## Requirements
+
+- [SageMath](https://www.sagemath.org/) with a Jupyter kernel
+- NumPy (available in standard SageMath installations)
+
+The notebooks were created with SageMath 9.5 and 10.6 kernels. SageMath 10.6 is the most recent version recorded in the repository and is the recommended starting point.
+
+## Quick start
+
+Clone the repository, change into the notebook directory, and start Jupyter through SageMath:
+
+```bash
+git clone https://github.com/mariotomba/CSF-DNC.git
+cd CSF-DNC/notebooks
+sage -n jupyter
+```
+
+Open a notebook and run its cells from top to bottom. The computational notebooks load the shared definitions with:
+
+```python
+%run DNCfundamentals.ipynb
+%run helperFunctions.ipynb
+```
+
+Run the notebooks from the `notebooks/` directory so these relative paths resolve correctly.
+
+## Notebook guide
+
+| Notebook | Purpose |
+| --- | --- |
+| `DNCfundamentals.ipynb` | Core deletion-near-contraction recurrence, CSF computation, graph constructors, and display helpers. |
+| `helperFunctions.ipynb` | Shared utilities for partitions, printed polynomials, and caterpillar data. |
+| `LeafContractionPolynomial.ipynb` | Computes the leaf-contraction polynomial and extracts its terms from a CSF vector. |
+| `CSFmatrix-caterpillar-basis.ipynb` | Builds the caterpillar-basis CSF matrix and computes basis coefficients. |
+| `CSFposet.ipynb` | Experimental displays of CSF-supported partitions grouped by length or number of ones. |
+| `CaterpillarsExperiments.ipynb` | Exploratory computations for caterpillars and comparisons of CSF-derived invariants. |
+
+## Minimal example
+
+After loading the two shared notebooks, construct a caterpillar from a composition and compute its CSF:
+
+```python
+T = create_caterpillar([2, 3, 1, 2, 3, 4])
+csf_vector = CSF_tree(T, prnt=1)
+```
+
+The returned vector is indexed by `Partitions(n)` in SageMath's default order, where `n` is the number of vertices.
+
+## Reproducibility notes
+
+- Some exploratory cells enumerate all trees or many caterpillar compositions. Their runtime and memory use grow quickly with `n`; begin with smaller values when checking an installation.
+- Notebook outputs have been retained because they record examples used during the research process.
+- `DNCfundamentals.ipynb` and `helperFunctions.ipynb` define the shared functions used by the remaining notebooks.
+
+## Research status and citation
+
+This repository contains active research software. Function names and exploratory workflows may evolve as the associated paper is finalized.
+
+If you use this code, please cite this repository and the associated paper once its bibliographic information is available. Formal citation metadata will be added when the paper title and publication details are finalized.
+
+## Acknowledgments
+
+This code was developed as part of joint work with Rosa Orellana and Michael Gonzalez.
+
+The DNC recurrence implemented here is due to Aliste-Prieto, de Mier, Orellana, and Zamora. The caterpillar-basis and related experiments belong to the Gonzalez–Orellana–Tomba project described above.
