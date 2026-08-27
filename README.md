@@ -2,7 +2,7 @@
 
 This repository contains SageMath research code for computing the chromatic symmetric function (CSF) in the star basis. The implementation uses the deletion-near-contraction (DNC) relation introduced by Aliste-Prieto, de Mier, Orellana, and Zamora.
 
-The notebooks support ongoing joint work by González, Orellana, and Tomba on chromatic symmetric functions of trees, with a particular emphasis on caterpillars and related bases.
+The notebooks support ongoing joint work by Michael Gonzalez, Rosa Orellana, and Mario Tomba on chromatic symmetric functions of trees, with a particular emphasis on caterpillars and related bases.
 
 ## Requirements
 
@@ -64,6 +64,8 @@ This repository contains active research software. Function names and explorator
 
 If you use this code, please cite this repository and the associated paper once its bibliographic information is available. Formal citation metadata will be added when the paper title and publication details are finalized.
 
-## Acknowledgment
+## Acknowledgments
 
-The DNC recurrence implemented here is due to Aliste-Prieto, de Mier, Orellana, and Zamora. The caterpillar-basis and related experiments belong to the González–Orellana–Tomba project described above.
+This code was developed as part of joint work with Rosa Orellana and Michael Gonzalez.
+
+The DNC recurrence implemented here is due to Aliste-Prieto, de Mier, Orellana, and Zamora. The caterpillar-basis and related experiments belong to the Gonzalez–Orellana–Tomba project described above.
