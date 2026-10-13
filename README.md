@@ -52,6 +52,45 @@ csf_vector = CSF_tree(T, prnt=1)
 
 The returned vector is indexed by `Partitions(n)` in SageMath's default order, where `n` is the number of vertices.
 
+## Trees with equal-order leaf components
+
+In `DNCfundamentals.ipynb`, run the definition cells through **Equal-order leaf
+components**, then call this function in a new cell:
+
+```python
+CSF_uniform_leaf_components(8, 2)
+```
+
+The two inputs are the total number of vertices `n` and the common leaf-component
+order `l`, both integers at least 2. A leaf component is a connected component
+obtained by deleting all internal edges (edges whose endpoints both have degree
+greater than one).
+
+For each tree, once up to isomorphism, the function displays its plot, prints
+`Leading partition: ...`, and prints the CSF as a linear combination of `st[...]`,
+using the same DNC computation and formatting as `CSF_iterator`. The example above
+displays two trees, both with leading partition `[2, 2, 2, 2]`.
+
+There are no qualifying trees if `l` does not divide `n`; the function prints a
+message in that case. Otherwise it generates cores on `n/l` vertices and attaches
+`l-1` leaves to every core vertex, avoiding enumeration of all trees on `n`
+vertices. When `n == l`, it displays the single star, including `K2` for `(2, 2)`.
+The number of cores and the DNC computation can still grow quickly.
+
+To use the trees and coefficient vectors without displaying them:
+
+```python
+for T in trees_uniform_leaf_components(12, 3):
+    csf_vector = CSF_tree(T)
+    # Process T and csf_vector here.
+```
+
+Run the regression tests from the repository root with:
+
+```bash
+sage -python -m unittest discover -s tests -v
+```
+
 ## Reproducibility notes
 
 - Some exploratory cells enumerate all trees or many caterpillar compositions. Their runtime and memory use grow quickly with `n`; begin with smaller values when checking an installation.
