@@ -21,7 +21,8 @@ cd CSF-DNC/notebooks
 sage -n jupyter
 ```
 
-Open a notebook and run its cells from top to bottom. The computational notebooks load the shared definitions with:
+Open `DNCexperiments.ipynb` to run examples and try your own computations. Run its
+cells from top to bottom. The computational notebooks load the shared definitions with:
 
 ```python
 %run DNCfundamentals.ipynb
@@ -29,12 +30,15 @@ Open a notebook and run its cells from top to bottom. The computational notebook
 ```
 
 Run the notebooks from the `notebooks/` directory so these relative paths resolve correctly.
+Loading `DNCfundamentals.ipynb` defines the shared functions without running example
+computations or displaying trees.
 
 ## Notebook guide
 
 | Notebook | Purpose |
 | --- | --- |
-| `DNCfundamentals.ipynb` | Core deletion-near-contraction recurrence, CSF computation, graph constructors, and display helpers. |
+| `DNCfundamentals.ipynb` | Shared definitions: the DNC recurrence, CSF computation, graph constructors, and display helpers. |
+| `DNCexperiments.ipynb` | Examples and space for your own experiments, including equal-order leaf components and the original 29-vertex example. |
 | `helperFunctions.ipynb` | Shared utilities for partitions, printed polynomials, and caterpillar data. |
 | `LeafContractionPolynomial.ipynb` | Computes the leaf-contraction polynomial and extracts its terms from a CSF vector. |
 | `CSFmatrix-caterpillar-basis.ipynb` | Builds the caterpillar-basis CSF matrix and computes basis coefficients. |
@@ -54,8 +58,8 @@ The returned vector is indexed by `Partitions(n)` in SageMath's default order, w
 
 ## Trees with equal-order leaf components
 
-In `DNCfundamentals.ipynb`, run the definition cells through **Equal-order leaf
-components**, then call this function in a new cell:
+In `DNCexperiments.ipynb`, run the setup cell, then choose `n` and `l` in the
+**Equal-order leaf components** example. For example:
 
 ```python
 CSF_uniform_leaf_components(8, 2)
@@ -95,6 +99,7 @@ sage -python -m unittest discover -s tests -v
 
 - Some exploratory cells enumerate all trees or many caterpillar compositions. Their runtime and memory use grow quickly with `n`; begin with smaller values when checking an installation.
 - Notebook outputs have been retained because they record examples used during the research process.
+- The original example cells and outputs from `DNCfundamentals.ipynb` are now in `DNCexperiments.ipynb`.
 - `DNCfundamentals.ipynb` and `helperFunctions.ipynb` define the shared functions used by the remaining notebooks.
 
 ## Publication and citation
